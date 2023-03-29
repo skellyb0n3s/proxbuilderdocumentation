@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Guide &mdash; proxbuilder  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick_start.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            proxbuilder
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html#building-your-lab">Building Your Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_overview.html">Configuration Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_deployment.html">Example Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packerbuilder.html">PackerBuilder</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">proxbuilder</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this heading"></a></h1>
+<p>This installation guide will walk you through the process of installing Proxmox on a dedicated server. Proxmox Virtual Environment (VE) is an open-source virtualization platform that allows you to manage virtual machines, containers, and storage through an easy-to-use web interface.</p>
+<ol class="arabic simple">
+<li><p>Download the latest Proxmox VE ISO image from the <a class="reference external" href="https://www.proxmox.com/en/downloads">official Proxmox website</a>.</p></li>
+<li><p>Burn the ISO image to a USB drive or CD/DVD using a tool like Rufus or balenaEtcher.</p></li>
+<li><p>Insert the USB drive or CD/DVD into the dedicated server and boot from it.</p></li>
+<li><p>Follow the on-screen installation prompts. Be sure to configure your network settings and storage options according to your requirements.</p></li>
+<li><p>After the installation is complete, reboot the server.</p></li>
+<li><p>Open a web browser and navigate to the IP address of your Proxmox server. You should see the Proxmox web interface.</p></li>
+<li><p>Log in to the Proxmox web interface using the “root” username and the password you set during the installation process.</p></li>
+<li><p>Update the system packages and install any necessary additional software:</p></li>
+<li><p>apt update &amp;&amp; apt upgrade</p></li>
+</ol>
+<p>Depending on what option you selected during the installation process, you may need to adjust the storage sizes of your server.</p>
+<p>There are two storage sources:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>local (pve)</p></li>
+<li><p>local-lvm (pve)</p></li>
+</ul>
+</div></blockquote>
+<p>The local (pve) houses your backups and more importantly, your ISO images. If you notice that this allocation is small, you’ll want to increase the allocation via the terminal (change the 500G to whatever you see fit):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lvremove<span class="w"> </span>/dev/pve/data
+vgdisplay<span class="w"> </span>pve<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Free
+lvresize<span class="w"> </span>-L<span class="w"> </span>+500G<span class="w"> </span>/dev/pve/root
+vgdisplay<span class="w"> </span>pve
+resize2fs<span class="w"> </span>/dev/mapper/pve-root
+</pre></div>
+</div>
+<p>Then you can readjust your local-lvm volume (which houses your vm templates and the disk space they use)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lvcreate<span class="w"> </span>-l<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>data<span class="w"> </span>pve
+lvconvert<span class="w"> </span>--type<span class="w"> </span>thin-pool<span class="w"> </span>pve/data
+lvextend<span class="w"> </span>-l<span class="w"> </span>+99%FREE<span class="w"> </span>pve/data
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick_start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SkellyB0nes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
