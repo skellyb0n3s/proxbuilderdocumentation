@@ -1,0 +1,1059 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example Deployment &mdash; proxbuilder  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PackerBuilder" href="packerbuilder.html" />
+    <link rel="prev" title="Scripts Configuration" href="scripts.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> proxbuilder
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html#building-your-lab">Building Your Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_overview.html">Configuration Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#no-routers-one-host">No Routers, One Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#no-routers-two-hosts">No Routers, Two Hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#one-router-one-interface-one-host">One Router, One Interface, One host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#one-router-two-interfaces-two-hosts">One Router, Two interfaces, Two hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#two-routers-one-interfaces-one-hosts">Two Routers, One interfaces, One hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-windows-deployment-and-attack-setup">Simple Windows Deployment and Attack Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-active-directory-setup">Simple Active Directory Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#complex-active-directory-setup">Complex Active Directory Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elastic-fusion-experimental">Elastic Fusion (Experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-1-0-router-1-network-1-host">Cyber SandBox Creator - Scenario 1 (0 router, 1 network , 1 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-2-0-router-1-network-4-host">Cyber SandBox Creator - Scenario 2 (0 router, 1 network , 4 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-3-1-router-1-network-1-host">Cyber SandBox Creator - Scenario 3 (1 router, 1 network , 1 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-4-2-router-2-network-2-host">Cyber SandBox Creator - Scenario 4 (2 router, 2 network , 2 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-5-2-router-4-network-4-host">Cyber SandBox Creator - Scenario 5 (2 router, 4 network , 4 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-scenario-6-3-router-5-network-5-host">Cyber SandBox Creator - Scenario 6 (3 router, 5 network , 5 host)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-sandbox-creator-bigbroker">Cyber SandBox Creator - BigBroker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#final-environment">Final Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="packerbuilder.html">PackerBuilder</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">proxbuilder</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Example Deployment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/example_deployment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="example-deployment">
+<h1>Example Deployment<a class="headerlink" href="#example-deployment" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we’ll provide some example YAML configuration files and an illustration of the final state of the environment they create.</p>
+<section id="no-routers-one-host">
+<h2>No Routers, One Host<a class="headerlink" href="#no-routers-one-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-windows&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win10-21h1-x64-autotemplate&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;im</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">lonely</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WINDOWSBOX&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="no-routers-two-hosts">
+<h2>No Routers, Two Hosts<a class="headerlink" href="#no-routers-two-hosts" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-windows&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows11-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;im</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">lonely</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WINDOWSBOX&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win2016-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;im</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">lonely</span><span class="nv"> </span><span class="s">server&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SERVERBOX&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="one-router-one-interface-one-host">
+<h2>One Router, One Interface, One host<a class="headerlink" href="#one-router-one-interface-one-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.1/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;two</span><span class="nv"> </span><span class="s">window</span><span class="nv"> </span><span class="s">test&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="one-router-two-interfaces-two-hosts">
+<h2>One Router, Two interfaces, Two hosts<a class="headerlink" href="#one-router-two-interfaces-two-hosts" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.1/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.10.1/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.10.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens20&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.10.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.10.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.10.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">interface&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server2&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">second</span><span class="nv"> </span><span class="s">interface&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver2&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="two-routers-one-interfaces-one-hosts">
+<h2>Two Routers, One interfaces, One hosts<a class="headerlink" href="#two-routers-one-interfaces-one-hosts" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="simple-windows-deployment-and-attack-setup">
+<h2>Simple Windows Deployment and Attack Setup<a class="headerlink" href="#simple-windows-deployment-and-attack-setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="simple-active-directory-setup">
+<h2>Simple Active Directory Setup<a class="headerlink" href="#simple-active-directory-setup" title="Permalink to this headline">¶</a></h2>
+<p>In this setup, we deploy a domain controller with a windows host and one user</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.1/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win2016-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;two</span><span class="nv"> </span><span class="s">window</span><span class="nv"> </span><span class="s">test&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_controller</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+<span class="w">      </span><span class="nt">local_admin_password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ElitePassw0rd123_&quot;</span>
+<span class="w">      </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windomain.local&quot;</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DC=windomain,DC=local&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-workstation&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win10-21h1-x64-autotemplate&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testing</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">deployment&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows_workstation</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windomain.local&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testhost&quot;</span>
+
+<span class="nt">forests</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windomain.local&quot;</span>
+<span class="w">      </span><span class="nt">domain_controller</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+<span class="w">      </span><span class="nt">netbios_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WINDOMAIN&quot;</span>
+<span class="w">      </span><span class="nt">domain_password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ElitePassw0rd123_&quot;</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testadmin&quot;</span>
+<span class="w">          </span><span class="nt">firstname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span>
+<span class="w">          </span><span class="nt">lastname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VeryS3cureP@ssw0rd&quot;</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test</span><span class="nv"> </span><span class="s">admin&quot;</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CN=Users,DC=windomain,DC=local&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="complex-active-directory-setup">
+<h2>Complex Active Directory Setup<a class="headerlink" href="#complex-active-directory-setup" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.15.0.0/24</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.0/24</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router1</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a test router</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.15.0.254</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ens19</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.15.0.2</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.15.0.250</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255.255.255.0</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.15.0.0/24</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.254</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ens20</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.2</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.250</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255.255.255.0</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.0/24</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc1</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server2019-2-x64-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_controller</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc1</span>
+<span class="w">      </span><span class="nt">local_admin_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ElitePassw0rd123_</span>
+<span class="w">      </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windomain.local</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;DC=windomain,DC=local&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-workstation</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">win10-21h1-x64-autotemplate</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testing server deployment</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows_workstation</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windomain.local</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testhost</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali-x64-autotemplate</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali</span>
+<span class="nt">forests</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windomain.local</span>
+<span class="w">      </span><span class="nt">domain_controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc1</span>
+<span class="w">      </span><span class="nt">netbios_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WINDOMAIN</span>
+<span class="w">      </span><span class="nt">domain_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ElitePassw0rd123_</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testadmin</span>
+<span class="w">          </span><span class="nt">firstname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">          </span><span class="nt">lastname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VeryS3cureP@ssw0rd</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test admin</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CN=Users,DC=windomain,DC=local&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testuser</span>
+<span class="w">          </span><span class="nt">firstname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">          </span><span class="nt">lastname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VeryS3cureP@ssw0rd</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test user</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CN=Users,DC=windomain,DC=local&#39;</span>
+<span class="w">      </span><span class="nt">organisation_units</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TestWorkstations</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">global</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redcircle</span>
+<span class="w">            </span><span class="nt">managed_by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testadmin</span>
+<span class="w">      </span><span class="nt">acls</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testadmin</span>
+<span class="w">          </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redcircle</span>
+<span class="w">          </span><span class="nt">right</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GenericAll</span>
+<span class="w">          </span><span class="nt">inheritance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</pre></div>
+</div>
+</section>
+<section id="elastic-fusion-experimental">
+<h2>Elastic Fusion (Experimental)<a class="headerlink" href="#elastic-fusion-experimental" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cyber-sandbox-creator-scenario-1-0-router-1-network-1-host">
+<h2>Cyber SandBox Creator - Scenario 1 (0 router, 1 network , 1 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-1-0-router-1-network-1-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;home&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;single-host&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-scenario-2-0-router-1-network-4-host">
+<h2>Cyber SandBox Creator - Scenario 2 (0 router, 1 network , 4 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-2-0-router-1-network-4-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian1&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian1&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian2&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian2&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kali&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kali-x64-autotemplate&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kali&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows2019&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows2019&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-scenario-3-1-router-1-network-1-host">
+<h2>Cyber SandBox Creator - Scenario 3 (1 router, 1 network , 1 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-3-1-router-1-network-1-host" title="Permalink to this headline">¶</a></h2>
+<p>Note - The following will say ssh failed to connect but the instance will be properly configured</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.30.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.30.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.30.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.30.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.30.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian1&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian1&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-scenario-4-2-router-2-network-2-host">
+<h2>Cyber SandBox Creator - Scenario 4 (2 router, 2 network , 2 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-4-2-router-2-network-2-host" title="Permalink to this headline">¶</a></h2>
+<p>Note - The following will say ssh failed to connect but the instance will be properly configured</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;home-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;home&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linux&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;home&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-scenario-5-2-router-4-network-4-host">
+<h2>Cyber SandBox Creator - Scenario 5 (2 router, 4 network , 4 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-5-2-router-4-network-4-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router1&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens20&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router2&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.0/24&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens20&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.0/24&quot;</span>
+
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host1&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host1&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host2&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host2&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host3&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host3&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host4&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host4&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-scenario-6-3-router-5-network-5-host">
+<h2>Cyber SandBox Creator - Scenario 6 (3 router, 5 network , 5 host)<a class="headerlink" href="#cyber-sandbox-creator-scenario-6-3-router-5-network-5-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.50.0.0/24&quot;</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr50&quot;</span>
+
+<span class="nt">hosts</span><span class="p">:</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router1&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.15.0.0/24&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens20&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens21&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.30.0.0/24&quot;</span>
+
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router2&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.40.0.0/24&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router3&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.50.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.50.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.50.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr50&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.50.0.0/24&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host1&quot;</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">      </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host1&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host2&quot;</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">      </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host2&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host3&quot;</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">      </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr30&quot;</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host3&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host4&quot;</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">      </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr40&quot;</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host4&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host5&quot;</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;server2019-2-x64-template&quot;</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="w">      </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr50&quot;</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host5&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cyber-sandbox-creator-bigbroker">
+<h2>Cyber SandBox Creator - BigBroker<a class="headerlink" href="#cyber-sandbox-creator-bigbroker" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.1.0/24</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.0.0/24</span>
+<span class="w">    </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bigbrokerrouter</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a test router</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.1.254</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ens19</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.1.2</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.1.250</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255.255.255.0</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.18.1.0/24</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internetrouter</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a test router</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.0.254</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ens19</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.0.2</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.0.250</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255.255.255.0</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.0.0/24</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workstation</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workstation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr19</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali-x64-autotemplate</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kali</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian11-template</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">just a single host</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmbr20</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client</span>
+</pre></div>
+</div>
+</section>
+<section id="final-environment">
+<h2>Final Environment<a class="headerlink" href="#final-environment" title="Permalink to this headline">¶</a></h2>
+<p>Here’s an illustration of the final state of the environment created by the above configuration files.</p>
+<a class="reference internal image-reference" href="path/to/your/image/final_environment.png"><img alt="Final environment illustration" src="path/to/your/image/final_environment.png" style="width: 600px;" /></a>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="packerbuilder.html" class="btn btn-neutral float-right" title="PackerBuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="scripts.html" class="btn btn-neutral float-left" title="Scripts Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, SkellyB0nes.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

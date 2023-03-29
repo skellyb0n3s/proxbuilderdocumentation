@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Host Configuration &mdash; proxbuilder  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Forest Configuration" href="forest_configuration.html" />
+    <link rel="prev" title="Network Configuration" href="network_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> proxbuilder
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html#building-your-lab">Building Your Lab</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="configuration_overview.html">Configuration Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="network_configuration.html">Network Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Host Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#host-configuration-attributes">Host Configuration Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-host-configuration">Example Host Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#role-debian-router">Role: debian-router</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accepted-variables">Accepted Variables:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#role-windows-workstation">Role: windows_workstation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Accepted Variables:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#role-domain-controller">Role: domain_controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Accepted Variables:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#role-kali">Role: Kali</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Accepted Variables:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#role-none">Role: None</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Accepted Variables:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forest_configuration.html">Forest Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example_deployment.html">Example Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packerbuilder.html">PackerBuilder</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">proxbuilder</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="configuration_overview.html">Configuration Overview</a> &raquo;</li>
+        
+      <li>Host Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/host_configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="host-configuration">
+<h1>Host Configuration<a class="headerlink" href="#host-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Hosts are defined in the <code class="docutils literal notranslate"><span class="pre">hosts</span></code> block of the <code class="docutils literal notranslate"><span class="pre">host.yml</span></code> file. Each host object must have a unique name, a template, a description, a type, and a set of roles. Additionally, you can provide custom variables under the <cite>vars</cite> key.</p>
+<p>Roles allow you to apply multiple pre-built configurations to the host. A host can have multiple roles although you’ll need to keep in mind how they are provisioned in ansible (i.e. the order of the roles matter). Each role may require additional variable declarations which would be added within the vars block.</p>
+<section id="host-configuration-attributes">
+<h2>Host Configuration Attributes<a class="headerlink" href="#host-configuration-attributes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: A unique name for the host.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code>: The template to use for creating the host instance. This template MUST exist on the proxmox server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: A description of the host.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: The type of host, e.g., “router”, “windows”, “linux”. (If the operating system is Kali, the type should be linux)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">roles</span></code>: A list of roles associated with the host.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">network</span></code> (Optional) Attach this virtual machine to the specified interface. This must correspond to an entry specified in the network block segment of your configuration file</p></li>
+</ul>
+<p>As an example, in the following configuration the windows host has vmbr19 specified as the network interface to attach to. The declaration of that network interface is defined in the “network” block of the configuration file</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="nt">network</span><span class="p">:</span>
+<span class="hll"><span class="linenos"> 2</span><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.1/24&quot;</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="w">     </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+</span><span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win10-21h1-x64-autotemplate&quot;</span>
+<span class="linenos"> 8</span><span class="w">     </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows</span><span class="nv"> </span><span class="s">host&quot;</span>
+<span class="linenos"> 9</span><span class="w">     </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="linenos">10</span><span class="w">     </span><span class="nt">roles</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="hll"><span class="linenos">12</span><span class="w">     </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr19&quot;</span>
+</span><span class="linenos">13</span><span class="w">     </span><span class="nt">vars</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">       </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="linenos">15</span><span class="w">       </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vars</span></code>: (Optional) A dictionary containing custom variables for the host.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Every host <code class="docutils literal notranslate"><span class="pre">vars</span></code> must have a <code class="docutils literal notranslate"><span class="pre">vmid:</span> <span class="pre">&quot;&quot;</span></code> variable set</p>
+</div>
+</section>
+<section id="example-host-configuration">
+<h2>Example Host Configuration<a class="headerlink" href="#example-host-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-router&quot;</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;debian11-template&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">router&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;router&quot;</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+<span class="w">    </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">internal_ip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.254&quot;</span>
+<span class="w">          </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ens19&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_start</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.2&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_end</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.250&quot;</span>
+<span class="w">          </span><span class="nt">dhcp_mask</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;255.255.255.0&quot;</span>
+<span class="w">          </span><span class="nt">bridge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="w">          </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.16.0.0/24&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="roles">
+<h2>Roles<a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Role</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>debian-router</p></td>
+<td><p>A role for Debian-based routers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>windows_workstation</p></td>
+<td><p>A role for Windows-based workstations.</p></td>
+</tr>
+<tr class="row-even"><td><p>domain_controller</p></td>
+<td><p>A role for setting up a domain controller</p></td>
+</tr>
+<tr class="row-odd"><td><p>kali</p></td>
+<td><p>A role for Kali system.</p></td>
+</tr>
+<tr class="row-even"><td><p>none</p></td>
+<td><p>Generic Role / Should be used if virtual machine is not assigned specific role</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="role-debian-router">
+<h2>Role: debian-router<a class="headerlink" href="#role-debian-router" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian-router</span>
+</pre></div>
+</div>
+<p>This role is designed for Debian-based routers. It includes the necessary configuration and setup to function as a router in your virtual environment.</p>
+<section id="accepted-variables">
+<h3>Accepted Variables:<a class="headerlink" href="#accepted-variables" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">interfaces</span></code> (required)</p>
+<blockquote>
+<div><p>Interface object that specifies the network interfaces of the router.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">internal_ip</span></code>: (required)</dt><dd><p>Must fall within the route attribute range.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">interface</span></code>: (required)</dt><dd><p>Must start at ens19 and increment by 1 for additional interfaces.</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">dhcp_start</span></code>: (required)</p>
+<p><code class="docutils literal notranslate"><span class="pre">dhcp_end</span></code>: (required)</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dhcp_mask</span></code>: (required)</dt><dd><p>Must correspond to the CIDR notation in the route attribute.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bridge</span></code>: (required)</dt><dd><p>Must correspond to an entry in the network block of the configuration.</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">route</span></code>: (required) This is the network / cidr range for that interface</p>
+</div></blockquote>
+</section>
+</section>
+<section id="role-windows-workstation">
+<h2>Role: windows_workstation<a class="headerlink" href="#role-windows-workstation" title="Permalink to this headline">¶</a></h2>
+<p>This role is designed for Windows-based workstations. It includes the necessary configuration and setup to function as a workstation in your virtual environment.</p>
+<section id="id1">
+<h3>Accepted Variables:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows_workstation</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">domain</span></code> (required)</dt><dd><p>Must match an existing domain entry in the domain block of the configuration file.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hostname</span></code> (required)</dt><dd><p>Specifies the hostname for the workstation.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="role-domain-controller">
+<h2>Role: domain_controller<a class="headerlink" href="#role-domain-controller" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_controller</span>
+</pre></div>
+</div>
+<p>This role is designed for Windows-based workstations. It includes the necessary configuration and setup to function as a workstation in your virtual environment.</p>
+<section id="id2">
+<h3>Accepted Variables:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>             (required) hostname for the server</p>
+<p><code class="docutils literal notranslate"><span class="pre">local_admin_password</span></code> (required) Required but not in use</p>
+<p><code class="docutils literal notranslate"><span class="pre">domain</span></code>               (required) The domain in which the domain controller will rule</p>
+<p><code class="docutils literal notranslate"><span class="pre">path</span></code>                 (required) ldap notation for domain</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">path</span></code> should be the distinguished name and include the value specified in <code class="docutils literal notranslate"><span class="pre">domain</span></code>. See below for an example</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-server&quot;</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;win2016-x64-template&quot;</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;two</span><span class="nv"> </span><span class="s">window</span><span class="nv"> </span><span class="s">test&quot;</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windows&quot;</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vmbr20&quot;</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="nt">roles</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_controller</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="nt">vars</span><span class="p">:</span>
+<span class="linenos"> 9</span><span class="w">     </span><span class="nt">vmid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="linenos">10</span><span class="w">     </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;testserver&quot;</span>
+<span class="linenos">11</span><span class="w">     </span><span class="nt">local_admin_password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Str0nGPassw0rd123_&quot;</span>
+<span class="hll"><span class="linenos">12</span><span class="w">     </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;windomain.local&quot;</span>
+</span><span class="hll"><span class="linenos">13</span><span class="w">     </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DC=windomain,DC=local&quot;</span>
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">scripts</span></code>              (optional) see the “scripts” page for more information</p>
+</section>
+</section>
+<section id="role-kali">
+<h2>Role: Kali<a class="headerlink" href="#role-kali" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>This role is designed for Kali attack workstation (not implemented)</p>
+<section id="id3">
+<h3>Accepted Variables:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>None</p>
+</section>
+</section>
+<section id="role-none">
+<h2>Role: None<a class="headerlink" href="#role-none" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</pre></div>
+</div>
+<p>This role is designed for Kali attack workstation</p>
+<section id="id4">
+<h3>Accepted Variables:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">hostname</span></code> (required) specifise the hostname for the instance. This works for both Linux/Windows instances</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="forest_configuration.html" class="btn btn-neutral float-right" title="Forest Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="network_configuration.html" class="btn btn-neutral float-left" title="Network Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, SkellyB0nes.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
